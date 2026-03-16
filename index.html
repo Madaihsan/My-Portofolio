@@ -1,0 +1,2015 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mada Ihsan Wicaksono | Information Student</title>
+
+    <!-- Favicon SVG -->
+    <link rel="icon" href="./images/favicon.png" type="image/png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          screens: {
+            xs: "400px",
+            sm: "640px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            "2xl": "1536px",
+          },
+          extend: {
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              body: ["DM Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              cyan: {
+                DEFAULT: "#06b6d4",
+                400: "#22d3ee",
+                500: "#06b6d4",
+                600: "#0891b2",
+                900: "#164e63",
+              },
+              sky: { DEFAULT: "#0ea5e9", 400: "#38bdf8", 500: "#0ea5e9" },
+            },
+            animation: {
+              float: "float 4s ease-in-out infinite",
+              "pulse-slow": "pulse 3s ease-in-out infinite",
+              "spin-slow": "spin 12s linear infinite",
+              glow: "glow 2s ease-in-out infinite alternate",
+            },
+            keyframes: {
+              float: {
+                "0%,100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-14px)" },
+              },
+              glow: {
+                from: { boxShadow: "0 0 20px #06b6d460" },
+                to: { boxShadow: "0 0 50px #0ea5e980, 0 0 80px #06b6d430" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --bg: #040d14;
+        --bg2: #071520;
+        --surface: rgba(6, 182, 212, 0.06);
+        --border: rgba(6, 182, 212, 0.15);
+        --accent: #06b6d4;
+        --accent2: #0ea5e9;
+        --text: #e2f4fb;
+        --muted: #6b909f;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 10px;
+      }
+
+      /* Custom cursor */
+      * {
+        cursor: none !important;
+      }
+      #cursor {
+        position: fixed;
+        width: 12px;
+        height: 12px;
+        background: var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transition: transform 0.15s ease;
+        mix-blend-mode: screen;
+      }
+      #cursor-ring {
+        position: fixed;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transition: all 0.2s ease;
+        opacity: 0.5;
+      }
+      body:hover #cursor {
+        transform: scale(1);
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        opacity: 0.025;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Grid background */
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+        background-size: 50px 50px;
+      }
+
+      /* Glass card */
+      .glass {
+        background: var(--surface);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+      }
+
+      /* Gradient text */
+      .grad-text {
+        background: linear-gradient(
+          135deg,
+          #06b6d4 0%,
+          #38bdf8 50%,
+          #818cf8 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Section fade-in on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger children */
+      .stagger > * {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .stagger.visible > *:nth-child(1) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.05s;
+      }
+      .stagger.visible > *:nth-child(2) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.15s;
+      }
+      .stagger.visible > *:nth-child(3) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.25s;
+      }
+      .stagger.visible > *:nth-child(4) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.35s;
+      }
+      .stagger.visible > *:nth-child(5) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.45s;
+      }
+      .stagger.visible > *:nth-child(6) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.55s;
+      }
+      .stagger.visible > *:nth-child(7) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.65s;
+      }
+      .stagger.visible > *:nth-child(8) {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0.75s;
+      }
+
+      /* Glow button */
+      .btn-glow {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .btn-glow::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .btn-glow:hover::before {
+        opacity: 0.15;
+      }
+      .btn-glow:hover {
+        box-shadow:
+          0 0 25px rgba(6, 182, 212, 0.4),
+          0 0 50px rgba(6, 182, 212, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Magnetic button */
+      .magnetic {
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+
+      /* Skill bar */
+      .skill-bar-fill {
+        width: 0;
+        transition: width 1.2s ease;
+      }
+
+      /* Typewriter cursor */
+      #typewriter::after {
+        content: "|";
+        animation: blink 0.8s step-end infinite;
+        color: var(--accent);
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Particles */
+      #particles-canvas {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      /* Nav link hover */
+      .nav-link {
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1.5px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+      .nav-link:hover::after {
+        width: 100%;
+      }
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Project card tilt */
+      .tilt-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        transform-style: preserve-3d;
+      }
+      .tilt-card:hover {
+        box-shadow: 0 20px 60px rgba(6, 182, 212, 0.15);
+      }
+
+      /* Floating orbs */
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+      }
+
+      /* Cert carousel */
+      .cert-slide {
+        transition:
+          transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.5s ease;
+      }
+
+      /* Input focus */
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+      }
+
+      /* Section number */
+      .sec-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+      }
+
+      /* Scrolling marquee */
+      @keyframes marquee {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .marquee-track {
+        animation: marquee 20s linear infinite;
+        white-space: nowrap;
+      }
+
+      /* Timeline dot pulse */
+      @keyframes ping {
+        75%,
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+      .ping {
+        animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+
+      /* Shine on skill tags */
+      .skill-tag {
+        position: relative;
+        overflow: hidden;
+      }
+      .skill-tag::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -60%;
+        width: 40%;
+        height: 200%;
+        background: rgba(255, 255, 255, 0.07);
+        transform: skewX(-20deg);
+        transition: left 0.5s ease;
+      }
+      .skill-tag:hover::after {
+        left: 120%;
+      }
+      #cert-track {
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body class="grid-bg relative">
+    <!-- Custom cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style="background: transparent"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="#hero" class="font-display font-bold text-xl">
+          <span class="grad-text">Mada</span
+          ><span class="text-white opacity-60">.</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="#about"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Tentang</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Keahlian</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Proyek</a
+          >
+          <a
+            href="#certs"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Sertifikasi</a
+          >
+          <a
+            href="#org"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Organisasi</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-sm font-body text-white/60 hover:text-white transition-colors"
+            >Kontak</a
+          >
+        </div>
+        <a
+          href="#contact"
+          class="hidden xs:block glass btn-glow magnetic text-xs font-mono px-4 py-2 rounded-full text-cyan-400 border border-cyan-500/30"
+        >
+          Hubungi Saya
+        </a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section
+      id="hero"
+      class="relative min-h-screen flex items-center overflow-hidden"
+    >
+      <canvas id="particles-canvas"></canvas>
+
+      <!-- Floating orbs -->
+      <div
+        class="orb w-96 h-96 bg-cyan-500/20 top-10 -left-32 animate-pulse-slow"
+      ></div>
+      <div
+        class="orb w-64 h-64 bg-sky-500/15 bottom-20 right-10 animate-pulse-slow"
+        style="animation-delay: 1.5s"
+      ></div>
+      <div
+        class="orb w-48 h-48 bg-indigo-500/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-24 w-full relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          <!-- Text side -->
+          <div class="flex-1 min-w-0 space-y-6 w-full">
+            <div class="reveal">
+              <span
+                class="font-mono text-xs text-cyan-400 tracking-widest bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full inline-block mb-4"
+              >
+                👋 Halo, saya
+              </span>
+              <h1
+                class="font-display text-4xl xs:text-5xl md:text-7xl font-extrabold leading-none"
+              >
+                <span class="block text-white">Mada Ihsan</span>
+                <span class="block grad-text">Wicaksono</span>
+              </h1>
+            </div>
+
+            <div class="reveal" style="transition-delay: 0.15s">
+              <div
+                class="flex flex-wrap items-center gap-x-2 gap-y-1 text-white/50 text-sm font-mono break-all"
+              >
+                <span class="text-cyan-400">const</span>
+                <span class="text-white">role</span>
+                <span class="text-white/40">=</span>
+                <span class="text-sky-300 flex items-center gap-0"
+                  >"<span id="typewriter" class="text-sky-300"></span>"</span
+                >
+              </div>
+            </div>
+
+            <div class="reveal" style="transition-delay: 0.25s">
+              <p
+                class="text-white/50 font-body text-base leading-relaxed max-w-lg"
+              >
+                Mahasiswa Sistem Informasi yang passionate membangun antarmuka
+                web yang responsif, bersih, dan berpusat pada pengguna.
+                Berpengalaman dengan React, Tailwind CSS, dan Laravel.
+              </p>
+            </div>
+
+            <div
+              class="reveal flex flex-col xs:flex-row flex-wrap gap-3"
+              style="transition-delay: 0.35s"
+            >
+              <!-- View CV -->
+              <a
+                href="https://drive.google.com/file/d/PLACEHOLDER_CV_ID/view"
+                target="_blank"
+                rel="noopener"
+                class="btn-glow magnetic group flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-display font-semibold px-6 py-3 rounded-full"
+              >
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                View CV
+                <i
+                  data-lucide="external-link"
+                  class="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity"
+                ></i>
+              </a>
+
+              <!-- Lihat Proyek -->
+              <a
+                href="#projects"
+                class="btn-glow magnetic glass group flex items-center gap-2 border border-cyan-500/30 text-cyan-400 text-sm font-display font-semibold px-6 py-3 rounded-full hover:border-cyan-400/60"
+              >
+                <i data-lucide="layers" class="w-4 h-4"></i>
+                Lihat Proyek
+                <i
+                  data-lucide="arrow-down"
+                  class="w-3 h-3 group-hover:translate-y-0.5 transition-transform"
+                ></i>
+              </a>
+            </div>
+
+            <!-- Social links -->
+            <div class="reveal flex gap-4 pt-2" style="transition-delay: 0.45s">
+              <a
+                href="https://www.linkedin.com/in/mada-ihsan"
+                target="_blank"
+                class="glass p-2.5 rounded-lg border border-white/5 text-white/40 hover:text-cyan-400 hover:border-cyan-500/30 transition-all magnetic"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="https://github.com/Madaihsan"
+                target="_blank"
+                class="glass p-2.5 rounded-lg border border-white/5 text-white/40 hover:text-cyan-400 hover:border-cyan-500/30 transition-all magnetic"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
+              <a
+                href="/cdn-cgi/l/email-protection#88e5e9ece9e1e0fbe9e6b9babbc8efe5e9e1e4a6ebe7e5"
+                class="glass p-2.5 rounded-lg border border-white/5 text-white/40 hover:text-cyan-400 hover:border-cyan-500/30 transition-all magnetic"
+              >
+                <i data-lucide="mail" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Avatar side -->
+          <div class="flex-shrink-0 relative">
+            <div
+              class="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 relative animate-float"
+            >
+              <!-- Outer ring spin -->
+              <div
+                class="absolute inset-0 rounded-full border border-dashed border-cyan-500/20 animate-spin-slow"
+              ></div>
+              <div
+                class="absolute inset-4 rounded-full border border-cyan-500/10 animate-spin-slow"
+                style="animation-direction: reverse; animation-duration: 8s"
+              ></div>
+              <!-- Glow ring -->
+              <div class="absolute inset-6 rounded-full animate-glow"></div>
+              <!-- Photo container -->
+              <div
+                class="absolute inset-8 rounded-full glass border-2 border-cyan-500/30 overflow-hidden flex items-center justify-center"
+              >
+                <!-- Placeholder avatar -->
+                <img
+                  src="./images/Foto-Profile.png"
+                  alt="Mada Ihsan Wicaksono"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/20 text-xs font-mono"
+      >
+        <span>scroll</span>
+        <div
+          class="w-px h-8 bg-gradient-to-b from-white/20 to-transparent animate-pulse"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE SKILLS ============ -->
+    <div class="py-6 overflow-hidden border-y border-white/5 bg-black/30">
+      <div class="marquee-track flex gap-12 items-center">
+        <span class="text-white/20 font-mono text-sm shrink-0">React</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0"
+          >Tailwind CSS</span
+        >
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">JavaScript</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">TypeScript</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Laravel</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Figma</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Flutter</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Firebase</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0"
+          >Git & GitHub</span
+        >
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">REST API</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <!-- duplicate for seamless loop -->
+        <span class="text-white/20 font-mono text-sm shrink-0">React</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0"
+          >Tailwind CSS</span
+        >
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">JavaScript</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">TypeScript</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Laravel</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Figma</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Flutter</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">Firebase</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0"
+          >Git & GitHub</span
+        >
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+        <span class="text-white/20 font-mono text-sm shrink-0">REST API</span>
+        <span class="text-cyan-500 text-xs shrink-0">◆</span>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-28 px-6 max-w-6xl mx-auto">
+      <div class="reveal mb-12">
+        <span class="sec-num">// 01</span>
+        <h2 class="font-display text-4xl font-bold mt-1">
+          Tentang <span class="grad-text">Saya</span>
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center stagger">
+        <div class="space-y-5">
+          <p class="text-white/60 font-body leading-relaxed">
+            Saya adalah mahasiswa
+            <span class="text-cyan-400 font-medium">Sistem Informasi</span>
+            dengan IPK 3.51 yang berfokus pada pengembangan Front-End dan desain
+            UI/UX. Saya percaya bahwa antarmuka yang baik bukan hanya soal
+            estetika—tapi juga tentang
+            <span class="text-white font-medium"
+              >bagaimana pengguna merasa</span
+            >
+            saat berinteraksi.
+          </p>
+          <p class="text-white/60 font-body leading-relaxed">
+            Dengan pengalaman membangun proyek dari CRUD apps, mobile apps,
+            hingga UX research, saya terbiasa bekerja dalam tim maupun secara
+            mandiri. Saya berkomitmen untuk terus belajar dan berkontribusi
+            dalam lingkungan
+            <span class="text-cyan-400 font-medium">startup</span> maupun
+            <span class="text-cyan-400 font-medium">remote</span>.
+          </p>
+          <p class="text-white/60 font-body leading-relaxed">
+            Saat tidak coding, saya aktif di komunitas robotik—menggabungkan
+            dunia software dan hardware untuk membangun robot yang kompetitif.
+            Ini melatih saya berpikir sistematis dan kolaboratif.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <div
+              class="glass border border-white/5 rounded-xl px-4 py-3 text-center"
+            >
+              <div class="font-display font-bold text-2xl grad-text">3.51</div>
+              <div class="text-xs text-white/40 font-mono mt-0.5">IPK</div>
+            </div>
+            <div
+              class="glass border border-white/5 rounded-xl px-4 py-3 text-center"
+            >
+              <div class="font-display font-bold text-2xl grad-text">4+</div>
+              <div class="text-xs text-white/40 font-mono mt-0.5">Proyek</div>
+            </div>
+            <div
+              class="glass border border-white/5 rounded-xl px-4 py-3 text-center"
+            >
+              <div class="font-display font-bold text-2xl grad-text">2+</div>
+              <div class="text-xs text-white/40 font-mono mt-0.5">
+                Tahun Aktif
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div
+            class="glass border border-white/5 rounded-2xl p-5 hover:border-cyan-500/20 transition-colors"
+          >
+            <div class="flex items-start gap-3">
+              <div
+                class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 mt-0.5"
+              >
+                <i data-lucide="code-2" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-white text-sm mb-1">
+                  Front-End Development
+                </h3>
+                <p class="text-white/40 text-sm font-body leading-relaxed">
+                  Membangun UI responsif dengan React, Tailwind CSS, dan
+                  JavaScript modern.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass border border-white/5 rounded-2xl p-5 hover:border-cyan-500/20 transition-colors"
+          >
+            <div class="flex items-start gap-3">
+              <div
+                class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 mt-0.5"
+              >
+                <i data-lucide="pen-tool" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-white text-sm mb-1">
+                  UI/UX Design
+                </h3>
+                <p class="text-white/40 text-sm font-body leading-relaxed">
+                  Wireframing, prototyping, dan user flow di Figma dengan
+                  prinsip user-centered design.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="glass border border-white/5 rounded-2xl p-5 hover:border-cyan-500/20 transition-colors"
+          >
+            <div class="flex items-start gap-3">
+              <div
+                class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0 mt-0.5"
+              >
+                <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-white text-sm mb-1">
+                  Computer Vision & Robotika
+                </h3>
+                <p class="text-white/40 text-sm font-body leading-relaxed">
+                  Eksplorasi YOLO untuk deteksi objek dalam konteks pengembangan
+                  robot kompetitif.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="py-28 px-6 bg-black/20">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal mb-12">
+          <span class="sec-num">// 02</span>
+          <h2 class="font-display text-4xl font-bold mt-1">
+            Keahlian <span class="grad-text">Teknis</span>
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 stagger">
+          <!-- Frontend -->
+          <div class="glass border border-white/5 rounded-2xl p-7">
+            <h3
+              class="font-display font-semibold text-white mb-6 flex items-center gap-2"
+            >
+              <i data-lucide="monitor" class="w-4 h-4 text-cyan-400"></i>
+              Frontend
+            </h3>
+            <div class="space-y-4" id="skills-frontend">
+              <div data-skill="HTML & CSS" data-pct="90"></div>
+              <div data-skill="JavaScript (ES6)" data-pct="80"></div>
+              <div data-skill="ReactJS" data-pct="72"></div>
+              <div data-skill="Tailwind CSS" data-pct="85"></div>
+              <div data-skill="TypeScript" data-pct="55"></div>
+            </div>
+          </div>
+
+          <!-- Backend & Tools -->
+          <div class="glass border border-white/5 rounded-2xl p-7">
+            <h3
+              class="font-display font-semibold text-white mb-6 flex items-center gap-2"
+            >
+              <i data-lucide="terminal" class="w-4 h-4 text-cyan-400"></i>
+              Backend & Tools
+            </h3>
+            <div class="space-y-4" id="skills-backend">
+              <div data-skill="Laravel" data-pct="60"></div>
+              <div data-skill="Firebase" data-pct="70"></div>
+              <div data-skill="REST API" data-pct="72"></div>
+              <div data-skill="Git & GitHub" data-pct="78"></div>
+              <div data-skill="Flutter / Dart" data-pct="55"></div>
+            </div>
+          </div>
+
+          <!-- Design -->
+          <div class="glass border border-white/5 rounded-2xl p-7">
+            <h3
+              class="font-display font-semibold text-white mb-6 flex items-center gap-2"
+            >
+              <i data-lucide="figma" class="w-4 h-4 text-cyan-400"></i>
+              Design
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >Figma</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >Wireframing</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >Prototyping</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >User Flow</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >User Research</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >Responsive Design</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-cyan-500/20 text-cyan-300"
+                >Canva</span
+              >
+            </div>
+          </div>
+
+          <!-- Soft skills -->
+          <div class="glass border border-white/5 rounded-2xl p-7">
+            <h3
+              class="font-display font-semibold text-white mb-6 flex items-center gap-2"
+            >
+              <i data-lucide="users" class="w-4 h-4 text-cyan-400"></i>
+              Lainnya
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Team Collaboration</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Problem Solving</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Agile / Scrum</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Bahasa Inggris</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Mentoring</span
+              >
+              <span
+                class="skill-tag glass text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 text-white/50"
+                >Computer Vision (YOLO)</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="py-28 px-6 max-w-6xl mx-auto">
+      <div class="reveal mb-12">
+        <span class="sec-num">// 03</span>
+        <h2 class="font-display text-4xl font-bold mt-1">
+          Proyek <span class="grad-text">Saya</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 stagger">
+        <!-- Project 1 -->
+        <div
+          class="tilt-card glass border border-white/5 rounded-2xl p-6 group hover:border-cyan-500/25 transition-all"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center"
+            >
+              <i data-lucide="database" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href="https://github.com/Madaihsan"
+                target="_blank"
+                class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+              >
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+          <h3
+            class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
+          >
+            Sistem Database Murid
+          </h3>
+          <p class="text-xs font-mono text-cyan-500/60 mb-3">
+            Web CRUD App · Full-Stack (Individu)
+          </p>
+          <p class="text-white/50 text-sm font-body leading-relaxed mb-5">
+            Aplikasi manajemen data murid berbasis web dengan autentikasi dan
+            role-based access (Admin & Guru). Dibangun dengan Firebase Firestore
+            dan React Router.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >ReactJS</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Firebase</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >React Router</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >JavaScript</span
+            >
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div
+          class="tilt-card glass border border-white/5 rounded-2xl p-6 group hover:border-cyan-500/25 transition-all"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center"
+            >
+              <i data-lucide="smartphone" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href="https://github.com/Madaihsan"
+                target="_blank"
+                class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+              >
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+          <h3
+            class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
+          >
+            Zooplay
+          </h3>
+          <p class="text-xs font-mono text-cyan-500/60 mb-3">
+            Aplikasi Edukasi Anak · Lead Developer (Tim 3)
+          </p>
+          <p class="text-white/50 text-sm font-body leading-relaxed mb-5">
+            Aplikasi pembelajaran interaktif tentang hewan untuk anak-anak.
+            Menampilkan gambar, nama, suara hewan, dan mini games seperti tebak
+            nama dan tebak suara.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Flutter</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Dart</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Local Assets</span
+            >
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div
+          class="tilt-card glass border border-white/5 rounded-2xl p-6 group hover:border-cyan-500/25 transition-all"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center"
+            >
+              <i data-lucide="file-signature" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href="https://github.com/Madaihsan"
+                target="_blank"
+                class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+              >
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+          <h3
+            class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
+          >
+            Digital Signature System
+          </h3>
+          <p class="text-xs font-mono text-cyan-500/60 mb-3">
+            Sistem Tanda Tangan Digital · Front-End Dev (Tim 10)
+          </p>
+          <p class="text-white/50 text-sm font-body leading-relaxed mb-5">
+            Sistem manajemen tanda tangan dokumen digital dengan fitur PDF
+            viewer, penandatanganan, dan pengiriman undangan via email.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >ReactJS</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Tailwind CSS</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >PDF Viewer</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Email Integration</span
+            >
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div
+          class="tilt-card glass border border-white/5 rounded-2xl p-6 group hover:border-cyan-500/25 transition-all"
+        >
+          <div class="flex items-start justify-between mb-4">
+            <div
+              class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center"
+            >
+              <i data-lucide="search" class="w-5 h-5 text-cyan-400"></i>
+            </div>
+            <div class="flex gap-2">
+              <a
+                href="https://github.com/Madaihsan"
+                target="_blank"
+                class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+              >
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+          <h3
+            class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
+          >
+            Redesign ADISTY
+          </h3>
+          <p class="text-xs font-mono text-cyan-500/60 mb-3">
+            UX Research Project · UI/UX Designer (Tim 5)
+          </p>
+          <p class="text-white/50 text-sm font-body leading-relaxed mb-5">
+            User research via wawancara, pengembangan user journey, dan redesign
+            navigasi aplikasi akademik ADISTY agar lebih intuitif khususnya pada
+            akses KRS.
+          </p>
+          <div class="flex flex-wrap gap-1.5">
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Figma</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Wireframing</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >Prototyping</span
+            >
+            <span
+              class="text-xs font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+              >UX Research</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATIONS & PRESTASI ============ -->
+    <section id="certs" class="py-28 px-6 bg-black/20">
+      <div class="max-w-6xl mx-auto">
+        <!-- Title -->
+        <div class="reveal mb-12">
+          <span class="sec-num">// 04</span>
+          <h2 class="font-display text-4xl font-bold mt-1">
+            Sertifikasi & <span class="grad-text">Prestasi</span>
+          </h2>
+        </div>
+
+        <!-- Carousel -->
+        <div class="relative reveal">
+          <div class="overflow-hidden rounded-2xl">
+            <div
+              id="cert-track"
+              class="flex transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+            ></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-center gap-4 mt-8">
+            <button
+              id="cert-prev"
+              class="glass border border-white/10 w-10 h-10 rounded-full flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-500/30"
+            >
+              ‹
+            </button>
+
+            <div id="cert-dots" class="flex gap-2"></div>
+
+            <button
+              id="cert-next"
+              class="glass border border-white/10 w-10 h-10 rounded-full flex items-center justify-center text-white/40 hover:text-cyan-400 hover:border-cyan-500/30"
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORGANISASI ============ -->
+    <section id="org" class="py-28 px-6 max-w-6xl mx-auto">
+      <div class="reveal mb-12">
+        <span class="sec-num">// 05</span>
+        <h2 class="font-display text-4xl font-bold mt-1">
+          Keaktifan <span class="grad-text">Organisasi</span>
+        </h2>
+      </div>
+
+      <div class="reveal">
+        <div class="relative pl-8">
+          <!-- Timeline line -->
+          <div
+            class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-cyan-500/20 to-transparent"
+          ></div>
+
+          <!-- Org item -->
+          <div class="relative mb-0">
+            <div
+              class="absolute -left-10 top-1 w-4 h-4 rounded-full border-2 border-cyan-500 bg-[var(--bg)] flex items-center justify-center"
+            >
+              <div
+                class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse-slow"
+              ></div>
+            </div>
+            <!-- Ping effect -->
+            <div
+              class="absolute -left-10 top-1 w-4 h-4 rounded-full border border-cyan-500/50 ping"
+            ></div>
+
+            <div
+              class="glass border border-white/5 rounded-2xl p-7 hover:border-cyan-500/20 transition-colors"
+            >
+              <div
+                class="flex flex-wrap items-start justify-between gap-4 mb-4"
+              >
+                <div>
+                  <h3 class="font-display font-bold text-white text-lg">
+                    Robotic Development Community
+                  </h3>
+                  <p class="text-cyan-400 text-sm font-mono mt-0.5">
+                    Anggota Aktif
+                  </p>
+                </div>
+                <span
+                  class="glass text-xs font-mono px-3 py-1 rounded-full border border-white/10 text-white/40"
+                  >2023 – Sekarang</span
+                >
+              </div>
+
+              <ul class="space-y-3">
+                <li
+                  class="flex items-start gap-3 text-white/50 text-sm font-body"
+                >
+                  <i
+                    data-lucide="chevron-right"
+                    class="w-4 h-4 text-cyan-500/60 shrink-0 mt-0.5"
+                  ></i>
+                  Berkontribusi dalam perancangan strategi dan desain robot
+                  sesuai regulasi lomba serta terlibat langsung dalam proses
+                  perancangan mekanik dan perakitan bersama tim teknis.
+                </li>
+                <li
+                  class="flex items-start gap-3 text-white/50 text-sm font-body"
+                >
+                  <i
+                    data-lucide="chevron-right"
+                    class="w-4 h-4 text-cyan-500/60 shrink-0 mt-0.5"
+                  ></i>
+                  Mempelajari dan mengimplementasikan Computer Vision
+                  menggunakan <span class="text-cyan-400">YOLO</span> untuk
+                  kebutuhan deteksi objek pada robot.
+                </li>
+                <li
+                  class="flex items-start gap-3 text-white/50 text-sm font-body"
+                >
+                  <i
+                    data-lucide="chevron-right"
+                    class="w-4 h-4 text-cyan-500/60 shrink-0 mt-0.5"
+                  ></i>
+                  Membimbing anggota baru terkait dasar mekanik dan perakitan
+                  robot, serta aktif berkolaborasi untuk menyiapkan robot
+                  kompetitif.
+                </li>
+              </ul>
+
+              <div class="flex flex-wrap gap-2 mt-5">
+                <span
+                  class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+                  >Computer Vision</span
+                >
+                <span
+                  class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+                  >YOLO</span
+                >
+                <span
+                  class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+                  >Robotika</span
+                >
+                <span
+                  class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+                  >Teamwork</span
+                >
+                <span
+                  class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/15"
+                  >Mentoring</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="py-28 px-6 bg-black/20">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal mb-12 text-center">
+          <span class="sec-num block mb-1">// 06</span>
+          <h2 class="font-display text-4xl font-bold">
+            Ayo <span class="grad-text">Terhubung</span>
+          </h2>
+          <p class="text-white/40 font-body mt-3 max-w-md mx-auto">
+            Terbuka untuk peluang kolaborasi, diskusi proyek, atau sekadar
+            ngobrol soal teknologi.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 stagger">
+          <!-- Contact info -->
+          <div class="space-y-4">
+            <a
+              href="/cdn-cgi/l/email-protection#14797570757d7c67757a252627547379757d783a777b79"
+              class="glass border border-white/5 rounded-2xl p-5 flex items-center gap-4 hover:border-cyan-500/25 transition-colors group block"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0"
+              >
+                <i data-lucide="mail" class="w-5 h-5 text-cyan-400"></i>
+              </div>
+              <div>
+                <p class="text-xs text-white/30 font-mono mb-0.5">Email</p>
+                <p
+                  class="text-white text-sm group-hover:text-cyan-400 transition-colors"
+                >
+                  <span
+                    class="__cf_email__"
+                    data-cfemail="2f424e4b4e46475c4e411e1d1c6f48424e4643014c4042"
+                    >[email&#160;protected]</span
+                  >
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mada-ihsan"
+              target="_blank"
+              class="glass border border-white/5 rounded-2xl p-5 flex items-center gap-4 hover:border-cyan-500/25 transition-colors group block"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0"
+              >
+                <svg
+                  class="w-5 h-5 text-cyan-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-white/30 font-mono mb-0.5">LinkedIn</p>
+                <p
+                  class="text-white text-sm group-hover:text-cyan-400 transition-colors"
+                >
+                  linkedin.com/in/mada-ihsan
+                </p>
+              </div>
+            </a>
+            <a
+              href="https://github.com/Madaihsan"
+              target="_blank"
+              class="glass border border-white/5 rounded-2xl p-5 flex items-center gap-4 hover:border-cyan-500/25 transition-colors group block"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0"
+              >
+                <svg
+                  class="w-5 h-5 text-cyan-400"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-white/30 font-mono mb-0.5">GitHub</p>
+                <p
+                  class="text-white text-sm group-hover:text-cyan-400 transition-colors"
+                >
+                  github.com/Madaihsan
+                </p>
+              </div>
+            </a>
+            <div
+              class="glass border border-white/5 rounded-2xl p-5 flex items-center gap-4"
+            >
+              <div
+                class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0"
+              >
+                <i data-lucide="map-pin" class="w-5 h-5 text-cyan-400"></i>
+              </div>
+              <div>
+                <p class="text-xs text-white/30 font-mono mb-0.5">Lokasi</p>
+                <p class="text-white text-sm">Yogyakarta, Indonesia</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Send Message Form -->
+          <div class="glass border border-white/5 rounded-2xl p-7">
+            <h3
+              class="font-display font-semibold text-white mb-5 flex items-center gap-2"
+            >
+              <i data-lucide="send" class="w-4 h-4 text-cyan-400"></i>
+              Kirim Pesan
+            </h3>
+
+            <div
+              id="form-success"
+              class="hidden mb-4 glass border border-green-500/30 rounded-xl p-4 text-green-400 text-sm font-mono flex items-center gap-2"
+            >
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              Pesan terkirim! Terima kasih 🙌
+            </div>
+            <div
+              id="form-error"
+              class="hidden mb-4 glass border border-red-500/30 rounded-xl p-4 text-red-400 text-sm font-mono flex items-center gap-2"
+            >
+              <i data-lucide="x-circle" class="w-4 h-4"></i>
+              Gagal mengirim. Coba lagi ya!
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="text-xs font-mono text-white/30 mb-1.5 block"
+                  >Nama</label
+                >
+                <input
+                  id="msg-name"
+                  type="text"
+                  placeholder="Nama kamu"
+                  class="form-input w-full glass border border-white/5 rounded-xl px-4 py-3 text-sm text-white font-body placeholder-white/20 transition-all"
+                />
+              </div>
+              <div>
+                <label class="text-xs font-mono text-white/30 mb-1.5 block"
+                  >Email</label
+                >
+                <input
+                  id="msg-email"
+                  type="email"
+                  placeholder="email@kamu.com"
+                  class="form-input w-full glass border border-white/5 rounded-xl px-4 py-3 text-sm text-white font-body placeholder-white/20 transition-all"
+                />
+              </div>
+              <div>
+                <label class="text-xs font-mono text-white/30 mb-1.5 block"
+                  >Pesan</label
+                >
+                <textarea
+                  id="msg-text"
+                  rows="4"
+                  placeholder="Hei Mada, saya mau ngobrol soal..."
+                  class="form-input w-full glass border border-white/5 rounded-xl px-4 py-3 text-sm text-white font-body placeholder-white/20 resize-none transition-all"
+                ></textarea>
+              </div>
+              <button
+                id="send-btn"
+                onclick="sendMessage()"
+                class="btn-glow magnetic w-full bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-display font-semibold text-sm py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
+              >
+                <i data-lucide="send" class="w-4 h-4" id="send-icon"></i>
+                <span id="send-label">Kirim Pesan</span>
+              </button>
+            </div>
+
+            <!-- EmailJS note -->
+            <p class="text-white/20 text-xs font-mono mt-4 text-center">
+              ⚙️ Setup EmailJS di
+              <code class="text-cyan-500/50">script</code> untuk aktifkan form
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="py-8 px-6 border-t border-white/5 text-center">
+      <p class="text-white/20 text-xs font-mono">
+        Created by
+        <span class="text-cyan-500/60">Mada Ihsan Wicaksono</span> · 2026
+      </p>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+      // ============================================================
+      // EMAILJS CONFIG — Ganti dengan data kamu dari emailjs.com
+      // ============================================================
+      const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // e.g. 'service_abc123'
+      const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. 'template_xyz789'
+      const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // e.g. 'Abc1DefGhi2Jkl3'
+      // ============================================================
+
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+
+      async function sendMessage() {
+        const name = document.getElementById("msg-name").value.trim();
+        const email = document.getElementById("msg-email").value.trim();
+        const message = document.getElementById("msg-text").value.trim();
+        const success = document.getElementById("form-success");
+        const error = document.getElementById("form-error");
+        const btn = document.getElementById("send-btn");
+        const label = document.getElementById("send-label");
+
+        success.classList.add("hidden");
+        error.classList.add("hidden");
+
+        if (!name || !email || !message) {
+          error.querySelector("span") && null;
+          error.classList.remove("hidden");
+          document.getElementById("form-error").textContent = "";
+          error.innerHTML =
+            '<i data-lucide="x-circle" class="w-4 h-4 inline mr-1"></i>Semua field harus diisi!';
+          lucide.createIcons();
+          return;
+        }
+
+        btn.disabled = true;
+        label.textContent = "Mengirim...";
+
+        try {
+          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+            from_name: name,
+            from_email: email,
+            message: message,
+            to_email: "madaihsan123@gmail.com",
+          });
+          success.classList.remove("hidden");
+          document.getElementById("msg-name").value = "";
+          document.getElementById("msg-email").value = "";
+          document.getElementById("msg-text").value = "";
+        } catch (e) {
+          error.classList.remove("hidden");
+        } finally {
+          btn.disabled = false;
+          label.textContent = "Kirim Pesan";
+        }
+      }
+
+      // ============================================================
+      // CUSTOM CURSOR
+      // ============================================================
+      const cursor = document.getElementById("cursor");
+      const cursorRing = document.getElementById("cursor-ring");
+      let mouseX = 0,
+        mouseY = 0,
+        ringX = 0,
+        ringY = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = mouseX - 6 + "px";
+        cursor.style.top = mouseY - 6 + "px";
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX - 18) * 0.12;
+        ringY += (mouseY - ringY - 18) * 0.12;
+        cursorRing.style.left = ringX + "px";
+        cursorRing.style.top = ringY + "px";
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      document.querySelectorAll("a, button, .magnetic").forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          cursor.style.transform = "scale(2.5)";
+          cursorRing.style.transform = "scale(1.5)";
+          cursorRing.style.opacity = "0.8";
+        });
+        el.addEventListener("mouseleave", () => {
+          cursor.style.transform = "scale(1)";
+          cursorRing.style.transform = "scale(1)";
+          cursorRing.style.opacity = "0.5";
+        });
+      });
+
+      // ============================================================
+      // PARTICLES
+      // ============================================================
+      const canvas = document.getElementById("particles-canvas");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+
+      function resize() {
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+
+      function initParticles() {
+        particles = [];
+        const count = Math.floor((canvas.width * canvas.height) / 18000);
+        for (let i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.5 + 0.3,
+            dx: (Math.random() - 0.5) * 0.3,
+            dy: (Math.random() - 0.5) * 0.3,
+            o: Math.random() * 0.5 + 0.1,
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(6,182,212,${p.o})`;
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+          // Connect nearby
+          for (let j = i + 1; j < particles.length; j++) {
+            const q = particles[j];
+            const dist = Math.hypot(p.x - q.x, p.y - q.y);
+            if (dist < 90) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(q.x, q.y);
+              ctx.strokeStyle = `rgba(6,182,212,${0.06 * (1 - dist / 90)})`;
+              ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(drawParticles);
+      }
+
+      resize();
+      initParticles();
+      drawParticles();
+      window.addEventListener("resize", () => {
+        resize();
+        initParticles();
+      });
+
+      // ============================================================
+      // NAVBAR scroll
+      // ============================================================
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("navbar");
+        if (window.scrollY > 60) {
+          nav.style.background = "rgba(4,13,20,0.85)";
+          nav.style.backdropFilter = "blur(16px)";
+          nav.style.borderBottom = "1px solid rgba(6,182,212,0.08)";
+        } else {
+          nav.style.background = "transparent";
+          nav.style.backdropFilter = "";
+          nav.style.borderBottom = "";
+        }
+      });
+
+      // ============================================================
+      // TYPEWRITER
+      // ============================================================
+      const words = [
+        "Front-End Developer",
+        "UI/UX Enthusiast",
+        "React Developer",
+        "Problem Solver",
+      ];
+      let wIdx = 0,
+        cIdx = 0,
+        deleting = false;
+      const tw = document.getElementById("typewriter");
+
+      function type() {
+        const current = words[wIdx];
+        if (!deleting) {
+          tw.textContent = current.slice(0, ++cIdx);
+          if (cIdx === current.length) {
+            deleting = true;
+            setTimeout(type, 1800);
+            return;
+          }
+        } else {
+          tw.textContent = current.slice(0, --cIdx);
+          if (cIdx === 0) {
+            deleting = false;
+            wIdx = (wIdx + 1) % words.length;
+          }
+        }
+        setTimeout(type, deleting ? 60 : 100);
+      }
+      setTimeout(type, 800);
+
+      // ============================================================
+      // SCROLL REVEAL
+      // ============================================================
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              // skill bars
+              if (e.target.id === "skills") triggerSkillBars();
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      document
+        .querySelectorAll(".reveal, .stagger")
+        .forEach((el) => observer.observe(el));
+
+      // Active nav
+      const sections = document.querySelectorAll("section[id]");
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((s) => {
+          if (window.scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        document.querySelectorAll(".nav-link").forEach((a) => {
+          a.classList.toggle(
+            "active",
+            a.getAttribute("href") === "#" + current,
+          );
+        });
+      });
+
+      // ============================================================
+      // SKILL BARS — build & animate
+      // ============================================================
+      function buildSkillBars() {
+        ["skills-frontend", "skills-backend"].forEach((containerId) => {
+          const container = document.getElementById(containerId);
+          if (!container) return;
+          container.querySelectorAll("[data-skill]").forEach((el) => {
+            const skill = el.dataset.skill;
+            const pct = el.dataset.pct;
+            el.innerHTML = `
+            <div class="flex justify-between mb-1.5">
+              <span class="text-sm font-body text-white/60">${skill}</span>
+              <span class="text-xs font-mono text-cyan-400/70">${pct}%</span>
+            </div>
+            <div class="h-1.5 bg-white/5 rounded-full overflow-hidden">
+              <div class="skill-bar-fill h-full bg-gradient-to-r from-cyan-500 to-sky-400 rounded-full" data-width="${pct}%"></div>
+            </div>
+          `;
+          });
+        });
+      }
+
+      let skillsAnimated = false;
+      function triggerSkillBars() {
+        if (skillsAnimated) return;
+        skillsAnimated = true;
+        setTimeout(() => {
+          document.querySelectorAll(".skill-bar-fill").forEach((bar) => {
+            bar.style.width = bar.dataset.width;
+          });
+        }, 300);
+      }
+
+      buildSkillBars();
+
+      // Also observe skills section specifically
+      const skillsSec = document.getElementById("skills");
+      if (skillsSec) {
+        const skillObs = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting) triggerSkillBars();
+          },
+          { threshold: 0.2 },
+        );
+        skillObs.observe(skillsSec);
+      }
+
+      // ============================================================
+      // CERTIFICATION CAROUSEL
+      // ============================================================
+      const track = document.getElementById("cert-track");
+      const dotsEl = document.getElementById("cert-dots");
+      let certIdx = 0;
+      let slidesVisible = 3;
+
+      const certs = [
+        {
+          img: "./images/Asisten Praktikum Dasar Pemrograman 2025-2026_page-0001.jpg",
+          badge: "Asisten Dosen",
+          badgeColor: "green",
+          title: "Asisten Praktikum Dasar Pemrograman",
+          issuer: "Sistem Informasi · 2025/2026",
+        },
+        {
+          img: "./images/Asisten Praktikum Konsep Basis Data 2025-2026 (2)_page-0001.jpg",
+          badge: "Asisten Dosen",
+          badgeColor: "green",
+          title: "Asisten Praktikum Konsep Basis Data",
+          issuer: "Sistem Informasi · 2025/2026",
+        },
+        {
+          img: "./images/Ijazah MT.jpg",
+          badge: "Ijazah",
+          badgeColor: "cyan",
+          title: "Ijazah Madrasah Tsanawiyah",
+          issuer: "Pendidikan",
+        },
+        {
+          img: "./images/Mini Seminar IT Governance.jpg",
+          badge: "Seminar",
+          badgeColor: "amber",
+          title: "Mini Seminar IT Governance",
+          issuer: "2024",
+        },
+        {
+          img: "./images/Piagam ASAD.jpg",
+          badge: "Penghargaan",
+          badgeColor: "amber",
+          title: "Piagam ASAD",
+          issuer: "Organisasi",
+        },
+        {
+          img: "./images/Sertifikat Orientasi Kemahasiswaan dan Alumni.jpg",
+          badge: "Sertifikat",
+          badgeColor: "cyan",
+          title: "Orientasi Kemahasiswaan & Alumni",
+          issuer: "Kampus",
+        },
+        {
+          img: "./images/Sertifikat Pelatihan Digital_ Gemini AI x GSA_Mada Ihsan Wicaksono_page-0001.jpg",
+          badge: "Pelatihan",
+          badgeColor: "cyan",
+          title: "Pelatihan Digital Gemini AI × GSA",
+          issuer: "Google · 2024",
+        },
+        {
+          img: "./images/Sertifikat Peserta KRI Wilayah 2024_page-0001.jpg",
+          badge: "Peserta",
+          badgeColor: "amber",
+          title: "Kontes Robot Indonesia Wilayah 2024",
+          issuer: "KRI · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Advanced TypeScript.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Advanced TypeScript",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Building REST APIs with Node.js.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Building REST APIs with Node.js",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Database Basics_ Designing and Managing Data System.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Database Basics: Designing & Managing Data",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Introductionto HTML.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Introduction to HTML",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Mastering CSS.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Mastering CSS",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Mastering Javascript.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Mastering JavaScript",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_ReactJS.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "ReactJS",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Smartpath_Bootcamp_Version Control with GIT.png",
+          badge: "Bootcamp",
+          badgeColor: "cyan",
+          title: "Version Control with Git",
+          issuer: "SmartPath · 2024",
+        },
+        {
+          img: "./images/Surat Selesai TugasTugas.jpg",
+          badge: "Dokumen",
+          badgeColor: "green",
+          title: "Surat Selesai Tugas",
+          issuer: "Akademik",
+        },
+      ];
+
+      const badgeClass = {
+        cyan: "bg-cyan-500/10 text-cyan-400 border-cyan-500/15",
+        green: "bg-green-500/10 text-green-400 border-green-500/15",
+        amber: "bg-amber-500/10 text-amber-400 border-amber-500/15",
+      };
+
+      // 1. Render HTML dulu
+      track.innerHTML = certs
+        .map(
+          (c) => `
+    <div class="cert-slide flex-shrink-0 px-3">
+      <div class="glass border border-white/5 rounded-2xl p-6 h-full hover:border-cyan-500/25 transition-colors group">
+        <div class="w-full h-36 rounded-xl overflow-hidden mb-5">
+          <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover" />
+        </div>
+        <span class="text-xs font-mono px-2 py-0.5 rounded-full border mb-3 inline-block ${badgeClass[c.badgeColor]}">${c.badge}</span>
+        <h3 class="font-display font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">${c.title}</h3>
+        <p class="text-white/40 text-xs font-mono">${c.issuer}</p>
+      </div>
+    </div>
+  `,
+        )
+        .join("");
+
+      function getSlidesVisible() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 1024) return 2;
+        return 3;
+      }
+
+      function buildDots(slides) {
+        dotsEl.innerHTML = "";
+        const count = slides.length - slidesVisible + 1;
+        for (let i = 0; i < count; i++) {
+          const d = document.createElement("button");
+          d.className = `w-2 h-2 rounded-full transition-all ${i === certIdx ? "bg-cyan-400 w-4" : "bg-white/20"}`;
+          d.onclick = () => goCert(i);
+          dotsEl.appendChild(d);
+        }
+      }
+
+      // 2. goCert ambil slides fresh setiap kali
+      function goCert(idx) {
+        const slides = track.querySelectorAll(".cert-slide");
+        slidesVisible = getSlidesVisible();
+        const max = slides.length - slidesVisible;
+        certIdx = Math.max(0, Math.min(idx, max));
+        const slideW = 100 / slidesVisible;
+        track.style.transform = `translateX(-${certIdx * slideW}%)`;
+        slides.forEach((s) => (s.style.width = `${slideW}%`));
+        buildDots(slides);
+      }
+
+      document.getElementById("cert-prev").onclick = () => goCert(certIdx - 1);
+      document.getElementById("cert-next").onclick = () => goCert(certIdx + 1);
+      window.addEventListener("resize", () => goCert(certIdx));
+
+      // 3. Init carousel setelah render
+      goCert(0);
+
+      // ============================================================
+      // 3D TILT on project cards
+      // ============================================================
+      document.querySelectorAll(".tilt-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(8px)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(600px) rotateY(0) rotateX(0) translateZ(0)";
+        });
+      });
+    </script>
+  </body>
+</html>

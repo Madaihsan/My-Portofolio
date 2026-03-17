@@ -426,6 +426,12 @@
           <span class="grad-text">Mada</span
           ><span class="text-white opacity-60">.</span>
         </a>
+
+        <!-- Hamburger button -->
+        <button id="hamburger" class="xs:hidden text-white/60 hover:text-cyan-400 transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+
         <div class="hidden md:flex items-center gap-8">
           <a
             href="#about"
@@ -464,8 +470,55 @@
         >
           Hubungi Saya
         </a>
+        
       </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 md:hidden">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+      <div
+        class="relative z-10 flex flex-col items-center justify-center h-full gap-8"
+      >
+        <a
+          href="#about"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Tentang</a
+        >
+        <a
+          href="#skills"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Keahlian</a
+        >
+        <a
+          href="#projects"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Proyek</a
+        >
+        <a
+          href="#certs"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Sertifikasi</a
+        >
+        <a
+          href="#org"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Organisasi</a
+        >
+        <a
+          href="#contact"
+          onclick="closeMenu()"
+          class="text-2xl font-display font-bold text-white/70 hover:text-cyan-400 transition-colors"
+          >Kontak</a
+        >
+        <div id="mobile-menu" class="hidden fixed inset-0 z-40 xs:hidden"></div>
+      </div>
+    </div>
 
     <!-- ============ HERO ============ -->
     <section
@@ -521,7 +574,7 @@
               <p
                 class="text-white/50 font-body text-base leading-relaxed max-w-lg"
               >
-                Mahasiswa Sistem Informasi yang passionate membangun antarmuka
+                Mahasiswa Sistem Informasi yang berminat dalam  membangun antarmuka
                 web yang responsif, bersih, dan berpusat pada pengguna.
                 Berpengalaman dengan React, Tailwind CSS, dan Laravel.
               </p>
@@ -971,7 +1024,7 @@
             </div>
             <div class="flex gap-2">
               <a
-                href="https://github.com/Madaihsan"
+                href="https://github.com/Madaihsan/ENTEN_FINAL-PROJECT_TEKWEB"
                 target="_blank"
                 class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
               >
@@ -982,7 +1035,7 @@
           <h3
             class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
           >
-            Sistem Database Murid
+            ENTEN
           </h3>
           <p class="text-xs font-mono text-cyan-500/60 mb-3">
             Web CRUD App · Full-Stack (Individu)
@@ -1024,7 +1077,7 @@
             </div>
             <div class="flex gap-2">
               <a
-                href="https://github.com/Madaihsan"
+                href="https://github.com/Madaihsan/zooplay"
                 target="_blank"
                 class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
               >
@@ -1073,7 +1126,7 @@
             </div>
             <div class="flex gap-2">
               <a
-                href="https://github.com/Madaihsan"
+                href="https://github.com/FuuNick/manajemen-tanda-tangan-dokumen"
                 target="_blank"
                 class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
               >
@@ -1084,7 +1137,7 @@
           <h3
             class="font-display font-bold text-white text-lg mb-1 group-hover:text-cyan-400 transition-colors"
           >
-            Digital Signature System
+            DigitalSign
           </h3>
           <p class="text-xs font-mono text-cyan-500/60 mb-3">
             Sistem Tanda Tangan Digital · Front-End Dev (Tim 10)
@@ -1125,11 +1178,11 @@
             </div>
             <div class="flex gap-2">
               <a
-                href="https://github.com/Madaihsan"
+                href="https://www.figma.com/proto/MJlBDCxnaaVVtuqcF9ILgr/RDPP_FIPEX_Kelompok-Kungfu?node-id=248-190&p=f&t=GEFCxsXkKseZVM1Q-0&scaling=min-zoom&content-scaling=fixed&page-id=248%3A186&starting-point-node-id=248%3A187"
                 target="_blank"
                 class="glass p-1.5 rounded-lg border border-white/5 text-white/30 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
               >
-                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <i data-lucide="figma" class="w-3.5 h-3.5"></i>
               </a>
             </div>
           </div>
@@ -1280,8 +1333,7 @@
                     class="w-4 h-4 text-cyan-500/60 shrink-0 mt-0.5"
                   ></i>
                   Mempelajari dan mengimplementasikan Computer Vision
-                  menggunakan <span class="text-cyan-400">YOLO</span> untuk
-                  kebutuhan deteksi objek pada robot.
+                  menggunakan YOLO untuk kebutuhan deteksi objek pada robot.
                 </li>
                 <li
                   class="flex items-start gap-3 text-white/50 text-sm font-body"
@@ -1580,6 +1632,26 @@
         }
       }
 
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobile-menu");
+      let menuOpen = false;
+
+      hamburger.addEventListener("click", () => {
+        menuOpen = !menuOpen;
+        mobileMenu.classList.toggle("hidden", !menuOpen);
+        hamburger.innerHTML = menuOpen
+          ? '<i data-lucide="x" class="w-5 h-5"></i>'
+          : '<i data-lucide="menu" class="w-5 h-5"></i>';
+        lucide.createIcons();
+      });
+
+      function closeMenu() {
+        menuOpen = false;
+        mobileMenu.classList.add("hidden");
+        hamburger.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+        lucide.createIcons();
+      }
+
       // ============================================================
       // CUSTOM CURSOR
       // ============================================================
@@ -1704,8 +1776,9 @@
       const words = [
         "Front-End Developer",
         "UI/UX Enthusiast",
-        "React Developer",
         "Problem Solver",
+        "Project Manager",
+        "System Analyst",
       ];
       let wIdx = 0,
         cIdx = 0,
@@ -1944,21 +2017,20 @@
         amber: "bg-amber-500/10 text-amber-400 border-amber-500/15",
       };
 
-      // 1. Render HTML dulu
       track.innerHTML = certs
         .map(
           (c) => `
-    <div class="cert-slide flex-shrink-0 px-3">
-      <div class="glass border border-white/5 rounded-2xl p-6 h-full hover:border-cyan-500/25 transition-colors group">
-        <div class="w-full h-36 rounded-xl overflow-hidden mb-5">
-          <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover" />
+        <div class="cert-slide flex-shrink-0 px-3">
+          <div class="glass border border-white/5 rounded-2xl p-6 h-full hover:border-cyan-500/25 transition-colors group">
+            <div class="w-full h-36 rounded-xl overflow-hidden mb-5">
+              <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover" />
+            </div>
+            <span class="text-xs font-mono px-2 py-0.5 rounded-full border mb-3 inline-block ${badgeClass[c.badgeColor]}">${c.badge}</span>
+            <h3 class="font-display font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">${c.title}</h3>
+            <p class="text-white/40 text-xs font-mono">${c.issuer}</p>
+          </div>
         </div>
-        <span class="text-xs font-mono px-2 py-0.5 rounded-full border mb-3 inline-block ${badgeClass[c.badgeColor]}">${c.badge}</span>
-        <h3 class="font-display font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors">${c.title}</h3>
-        <p class="text-white/40 text-xs font-mono">${c.issuer}</p>
-      </div>
-    </div>
-  `,
+      `,
         )
         .join("");
 
